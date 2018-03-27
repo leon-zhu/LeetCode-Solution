@@ -11,6 +11,16 @@
  //注意:
 class Solution {
     public ListNode reverseList(ListNode head) {
-        
+        if (head == null)
+            return null;
+        ListNode pLeft = null;
+        ListNode pRight = head;
+        while (head != null) {
+            pRight = head.next;
+            head.next = pLeft;
+            pLeft = head;
+            head = pRight;
+        }
+        return pLeft;
     }
 }
