@@ -1,7 +1,6 @@
 class Test {
     public static void main(String[] args) {
-		//²âÊÔ
-		System.out.println("ÄãºÃ£¡");
+		//æ³¨é‡Š
+		System.out.println("ä½ å¥½");
     }
-    
 }
