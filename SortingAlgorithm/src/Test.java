@@ -1,6 +1,5 @@
 import java.util.Random;
 class Test {
-
     static int[] createArray(int len, int bound) {
         int[] array = new int[len];
         Random rand = new Random();
@@ -22,5 +21,34 @@ class Test {
         for (int e : arr)
             System.out.print(e + " ");
         System.out.println();
+    }
+
+    /**
+     *
+     * @param sortName 排序算法
+     * @param arr 待排序数组
+     * @return 消耗时间
+     */
+    private static long time(String sortName, int[] arr) {
+        long startTime = System.currentTimeMillis();
+        if (sortName.equals("select"))
+            SelectionSort.sort(arr);
+        else if (sortName.equals("insert"))
+            InsertionSort.sortBetter(arr);
+        else if (sortName.equals("shell"))
+            ShellSort.sort(arr);
+        long endTime = System.currentTimeMillis();
+        return endTime - startTime;
+    }
+
+    public static void main(String[] args) {
+        int len = 100000; //数组长度
+        int bound = Integer.MAX_VALUE; //数组元素大小上界
+        int[] arr = Test.createArray(len, bound);
+        System.out.println("insert: " + Test.time("insert", arr));
+        arr = Test.createArray(len, bound);
+        System.out.println("select: " + Test.time("select", arr));
+        arr = Test.createArray(len*10, bound);
+        System.out.println("shell: " + Test.time("shell", arr));
     }
 }

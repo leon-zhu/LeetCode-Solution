@@ -6,10 +6,14 @@
  * 以此类推...
  *
  * N次交换，(N^2)/2次比较
+ *
+ * @author: leon
+ * @date: 2018/4/12 18:15
+ * @version: 1.0
  */
 
 public class SelectionSort {
-    private static void sort(int[] array) {
+    static void sort(int[] array) {
         for (int i = 0; i < array.length; i++) {
             int minIndex = i;
             //寻找最小值，然后和首元素交换
@@ -22,7 +26,7 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = Test.createArray(10, 100);
+        int[] arr = Test.createArray(100000, Integer.MAX_VALUE);
         Test.print(arr);
         sort(arr);
         assert Test.isSorted(arr);

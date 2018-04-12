@@ -1,11 +1,14 @@
-import java.util.Random;
-
 /**
  * 冒泡排序
  *
  * 两两比较，满足条件则交换（最后一个元素为最大或最小值）
  * (N^2)/2 交换跟顺序有关，最差情况是(N^2)/2,跟比较一样   (N^2)/2 比较
+ *
+ * @author: leon
+ * @date: 2018/4/12 18:15
+ * @version: 1.0
  */
+
 public class BubbleSort {
 
     private static void sort(int[] array) {
