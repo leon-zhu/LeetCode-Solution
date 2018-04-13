@@ -37,6 +37,8 @@ class Test {
             InsertionSort.sortBetter(arr);
         else if (sortName.equals("shell"))
             ShellSort.sort(arr);
+        else if (sortName.equals("merge"))
+            MergeSort.sort(arr);
         long endTime = System.currentTimeMillis();
         return endTime - startTime;
     }
@@ -48,7 +50,9 @@ class Test {
         System.out.println("insert: " + Test.time("insert", arr));
         arr = Test.createArray(len, bound);
         System.out.println("select: " + Test.time("select", arr));
-        arr = Test.createArray(len*10, bound);
+        arr = Test.createArray(len*100, bound);
         System.out.println("shell: " + Test.time("shell", arr));
+        arr = Test.createArray(len*100, bound);
+        System.out.println("merge: " + Test.time("merge", arr));
     }
 }
