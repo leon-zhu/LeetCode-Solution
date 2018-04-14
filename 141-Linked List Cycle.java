@@ -10,7 +10,7 @@
  * }
  */
  //题目: 检测链表是否有环
- //思路: 使用快慢指针: slow = slow.next fast = fast.next.next;
+ //思路: 使用快慢指针: slow = slow.next, fast = fast.next.next;
  //注意: 有两种情况需要注意: 1. 避免因为fast=slow=null而误判 2. 避免初始时fast=slow=head，然后直接检测是否相等
 public class Solution {
     public boolean hasCycle(ListNode head) {
