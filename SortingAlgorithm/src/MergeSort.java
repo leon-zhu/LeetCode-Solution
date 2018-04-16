@@ -12,7 +12,7 @@
  *
  * 那么有C(N) = 2*C(N)+N
  *
- * 令N=2^n; 那么有C(2^n) = 2*C(2^n) + 2^n;
+ *令N=2^n; 那么有C(2^n) = 2*C(2^n) + 2^n;
  *
  * n=n-1 => C(2^(n-1)) = 2*C(2^(n-1)) + 2^(n-1);
  *
@@ -22,6 +22,13 @@
  * 继续迭代可以得到:
  * C(2^n) = z^n*(C(1)) + n*2^n;
  * 即C(N) = N*lgN (较小的项目被忽略)
+ *
+ * 归并算法的改进:
+ * 1. 对于小数组的排序使用插入排序(快排也是这样), 原因: 递归导致方法调用的开销
+ * 2. 在使用merge()之前, 首先判断arr[mid] <= arr[mid+1]? 是->跳过merge()函数, 因为要归并
+ *    的两个子数组已经有序
+ * 3. 数组复制的开销 (交换输入数组和辅助数组的角色)
+ *
  */
 
 public class MergeSort {
@@ -61,10 +68,24 @@ public class MergeSort {
         }
     }
 
+    //Bottom to up (自底向上归并)
+    private static void sortBU(int[] array) {
+        int N = array.length;
+        aux = new int[N];
+        //size: 要归并的子数组大小
+        for (int size = 1; size < N; size *= 2) {
+            //left < N-size+1: 保证下面的left+size-1不越界
+            for (int left = 0; left < N-size+1; left += size*2) {
+                merge(array, left, left+size-1, Math.min(left+2*size-1, N-1));
+            }
+        }
+    }
+
     public static void main(String[] args) {
         int[] arr = Test.createArray(10, 100);
         Test.print(arr);
-        sort(arr);
+        //sort(arr);
+        sortBU(arr); //自底向上归并
         assert Test.isSorted(arr);
         Test.print(arr);
     }
