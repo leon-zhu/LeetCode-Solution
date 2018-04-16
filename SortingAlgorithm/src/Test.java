@@ -39,6 +39,8 @@ class Test {
             ShellSort.sort(arr);
         else if (sortName.equals("merge"))
             MergeSort.sort(arr);
+        else if (sortName.equals("quick"))
+            QuickSort.sort(arr);
         long endTime = System.currentTimeMillis();
         return endTime - startTime;
     }
@@ -47,12 +49,18 @@ class Test {
         int len = 100000; //数组长度
         int bound = Integer.MAX_VALUE; //数组元素大小上界
         int[] arr = Test.createArray(len, bound);
-        System.out.println("insert: " + Test.time("insert", arr));
-        arr = Test.createArray(len, bound);
         System.out.println("select: " + Test.time("select", arr));
+
+        arr = Test.createArray(len, bound);
+        System.out.println("insert: " + Test.time("insert", arr));
+
         arr = Test.createArray(len*100, bound);
         System.out.println("shell: " + Test.time("shell", arr));
+
         arr = Test.createArray(len*100, bound);
         System.out.println("merge: " + Test.time("merge", arr));
+
+        arr = Test.createArray(len*100, bound);
+        System.out.println("quick: " + Test.time("quick", arr));
     }
 }

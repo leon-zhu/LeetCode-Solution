@@ -84,8 +84,8 @@ public class MergeSort {
     public static void main(String[] args) {
         int[] arr = Test.createArray(10, 100);
         Test.print(arr);
-        //sort(arr);
-        sortBU(arr); //自底向上归并
+        sort(arr);
+        //sortBU(arr); //自底向上归并 (Bottom to Up)
         assert Test.isSorted(arr);
         Test.print(arr);
     }
